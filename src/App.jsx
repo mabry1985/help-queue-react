@@ -26,7 +26,7 @@ class App extends React.Component {
         <BrowserRouter>
           <main className="container">
             <Header />
-            <Routes  />
+            <Routes handleAddingNewTicketToList={this.handleAddingNewTicketToList}  masterTicketList={this.state.masterTicketList}/>
           </main>
         </BrowserRouter>
       </div>
