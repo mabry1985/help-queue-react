@@ -1,9 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
-import Routes from './Routes';
-import Header from './components/Header';
-import TicketList from './components/TicketList';
+import Header from './Header';
+import TicketList from './TicketList';
+import NewTicketControl from './NewTicketControl';
+import Error404 from './Error404';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Moment from 'moment';
+import Admin from './Admin';
 
 class App extends React.Component {
 
@@ -47,7 +49,16 @@ class App extends React.Component {
         <BrowserRouter>
           <main className="container">
             <Header />
-            <Routes handleAddingNewTicketToList={this.handleAddingNewTicketToList}  masterTicketList={this.state.masterTicketList}/>
+            <Switch>
+              <Route exact path="/" render={()=><TicketList
+                                      ticketList={this.state.masterTicketList} />} />
+              <Route path="/newticket" render={()=><NewTicketControl
+                                         onNewTicketCreation={this.handleAddingNewTicketToList} />} />
+              <Route path='/admin' render={(props)=><Admin
+                                         ticketList={this.state.masterTicketList}
+                                         currentRouterPath={props.location.pathname}/>} />
+              <Route component={Error404} />
+            </Switch>
           </main>
         </BrowserRouter>
       </div>

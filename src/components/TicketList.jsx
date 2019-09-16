@@ -12,6 +12,7 @@ function TicketList(props) {
           location={ticket.location}
           issue={ticket.issue}
           formattedWaitTime={ticket.formattedWaitTime}
+          currentRouterPath={props.currentRouterPath}
           key={ticket.id}/>
       )}
     </div>
@@ -19,6 +20,7 @@ function TicketList(props) {
 
   Ticketlist.propTypes = {
     ticketList: PropTypes.array,
+    currentRouterPath: PropTypes.string,
   };
 }
 

@@ -4,12 +4,14 @@ import Moment from 'moment';
 
 function Ticket(props) {
   return (
-      <div>
-        <h3>{props.location} - {props.names}</h3>
-        <h3>{props.formattedWaitTime}</h3>
-        <p><em>{props.issue}</em></p>
-        <hr/>
-      </div>
+  <div onClick={() => {alert('hey, you just clicked the ticket belonging to ' + props.names);}}>
+
+    <h3>{props.location} - {props.names}</h3>
+    <h4>{props.formattedWaitTime}</h4>
+    <p><em>{props.issue}</em></p>
+    <hr/>
+
+  </div>
   );
 }
 
@@ -18,6 +20,7 @@ Ticket.propTypes = {
   location: PropTypes.string.isRequired,
   issue: PropTypes.string,
   formattedWaitTime: PropTypes.string.isRequired,
+  currentRouterPath: PropTypes.string,
 };
 
 export default Ticket;
