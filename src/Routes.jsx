@@ -4,9 +4,6 @@ import TicketList from './components/TicketList';
 import NewTicketForm from './components/NewTicketForm';
 import NewTicketControl from './components/NewTicketControl';
 
-
-
-
 const Routes = (props) => (
   <Switch>
   {  console.log(props)};
