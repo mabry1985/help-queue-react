@@ -3,16 +3,26 @@ import PropTypes from 'prop-types';
 import Moment from 'moment';
 
 function Ticket(props) {
-  return (
-  <div onClick={() => {alert('hey, you just clicked the ticket belonging to ' + props.names);}}>
+  const ticketInformation =
+    <div>
+      <h3>{props.location} - {props.names}</h3>
+      <h4>{props.formattedWaitTime}</h4>
+      <hr/>
+    </div>;
+  if (props.currentRouterPath === '/admin') {
+    return (
+      <div onClick={() => {alert('hey, you just clicked the ticket belonging to ' + props.names);}}>
 
-    <h3>{props.location} - {props.names}</h3>
-    <h4>{props.formattedWaitTime}</h4>
-    <p><em>{props.issue}</em></p>
-    <hr/>
-
-  </div>
-  );
+        {ticketInformation}
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        {ticketInformation}
+      </div>
+    );
+  }
 }
 
 Ticket.propTypes = {
